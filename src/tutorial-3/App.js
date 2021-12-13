@@ -18,7 +18,7 @@ const handleClickAdd = () => {
     alert('Введите задачу')
     return
   }
-  tasks.push(inputEl.value);
+  tasks.push(inputEl.value.trim());
   render();
   inputEl.value = '';
 }
