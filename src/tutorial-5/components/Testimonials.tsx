@@ -4,12 +4,12 @@ import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import PersonIcon from '@mui/icons-material/Person';
-import { FunctionComponent } from 'react';
+import { FC } from 'react';
 import { ITestimonial } from '../App';
 import { Typography } from '@mui/material';
 
 
-export const Testimonials: FunctionComponent<{ testimonials: ITestimonial[], onClick: Function }> = ({ testimonials, onClick }): JSX.Element => {
+export const Testimonials: FC<{ testimonials: ITestimonial[], onClick: Function }> = ({ testimonials, onClick })=> {
   return (
     <List sx={{
       width: '100%',

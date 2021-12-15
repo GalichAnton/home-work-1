@@ -20,7 +20,7 @@ const App = () => {
   }
 
   const onDelete = (id: string): void => {
-    const newArr = testimonials.filter((_, i) => i + '' !== id)
+    const newArr = testimonials.filter((_, i) => String(i) !== id)
     setTestimonials(newArr)
   }
 

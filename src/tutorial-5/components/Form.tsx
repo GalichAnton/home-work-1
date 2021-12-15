@@ -1,10 +1,10 @@
 import { TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { FormEvent, FunctionComponent, useRef } from 'react';
+import { FC, FormEvent,  useRef } from 'react';
 import { ITestimonial } from '../App';
 
-const Form: FunctionComponent<{ onSubmit: Function }> = ({ onSubmit }) => {
+const Form: FC<{ onSubmit: (testimonial: ITestimonial) => void }> = ({ onSubmit }) => {
 
   const formRef = useRef<HTMLFormElement>()
 
@@ -13,7 +13,7 @@ const Form: FunctionComponent<{ onSubmit: Function }> = ({ onSubmit }) => {
     const newData = new FormData(formRef.current)
     const newDate = new Date()
     const newTestimonial: ITestimonial = {
-      fullName: '' + newData.get('name'),
+      fullName: '' + newData?.get('name'),
       email: '' + newData.get('email'),
       text: '' + newData.get('msg'),
       createdAt: newDate.toLocaleString('ru-RU', { year: 'numeric', month: 'numeric', day: 'numeric' })
@@ -51,8 +51,8 @@ const Form: FunctionComponent<{ onSubmit: Function }> = ({ onSubmit }) => {
         required
         margin="dense"
         name='email'
-        placeholder='Почта' 
-        type='email' 
+        placeholder='Почта'
+        type='email'
         sx={{
           padding: '5px',
           borderRadius: '5px'
