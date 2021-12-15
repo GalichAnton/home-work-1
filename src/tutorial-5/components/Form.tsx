@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { FC, FormEvent,  useRef } from 'react';
+import { FC, FormEvent, useRef } from 'react';
 import { ITestimonial } from '../App';
 
 const Form: FC<{ onSubmit: (testimonial: ITestimonial) => void }> = ({ onSubmit }) => {
@@ -12,13 +12,15 @@ const Form: FC<{ onSubmit: (testimonial: ITestimonial) => void }> = ({ onSubmit 
     e.preventDefault()
     const newData = new FormData(formRef.current)
     const newDate = new Date()
-    const newTestimonial: ITestimonial = {
-      fullName: '' + newData?.get('name'),
-      email: '' + newData.get('email'),
-      text: '' + newData.get('msg'),
-      createdAt: newDate.toLocaleString('ru-RU', { year: 'numeric', month: 'numeric', day: 'numeric' })
+    if (newData) {
+      const newTestimonial: ITestimonial = {
+        fullName: String(newData.get('name')),
+        email: String(newData.get('email')),
+        text: String(newData.get('msg')),
+        createdAt: newDate.toLocaleString('ru-RU', { year: 'numeric', month: 'numeric', day: 'numeric' })
+      }
+      onSubmit(newTestimonial)
     }
-    onSubmit(newTestimonial)
   }
 
   return (
