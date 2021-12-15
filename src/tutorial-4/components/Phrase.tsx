@@ -7,9 +7,9 @@ interface IPhrase {
 
 const Phrase: FunctionComponent<IPhrase> = (props: IPhrase): JSX.Element => {
   return (
-    <div className="list">
+    <div  className="list">
       {props.phrases.map((phrase) => {
-        return <div key={phrase} className="block"><h3>{phrase}</h3></div>
+        return <div  key={phrase} className="block"><h3>{phrase}</h3></div>
       })
       }
 
